@@ -9,9 +9,11 @@ class hosts (
   $enable_fqdn_entry     = true,
   $use_fqdn              = true,
   $fqdn_host_aliases     = $::hostname,
+  $localhost_entry       = 'localhost.localdomain',
   $localhost_aliases     = ['localhost',
                             'localhost4',
                             'localhost4.localdomain4'],
+  $localhost6_entry       = 'localhost6.localdomain6',
   $localhost6_aliases    = ['localhost6',
                             'localhost6.localdomain6'],
   $purge_hosts           = false,
@@ -108,13 +110,13 @@ class hosts (
     ensure => 'absent',
   }
 
-  host { 'localhost.localdomain':
+  host { $localhost_entry:
     ensure       => $localhost_ensure,
     host_aliases => $my_localhost_aliases,
     ip           => $localhost_ip,
   }
 
-  host { 'localhost6.localdomain6':
+  host { $localhost6_entry:
     ensure       => $localhost6_ensure,
     host_aliases => $my_localhost6_aliases,
     ip           => $localhost6_ip,
