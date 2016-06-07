@@ -106,10 +106,6 @@ class hosts (
     target => $target,
   }
 
-  host { 'localhost':
-    ensure => 'absent',
-  }
-
   host { 'ipv4_localhost':
     name         => $localhost_entry,
     ensure       => $localhost_ensure,
