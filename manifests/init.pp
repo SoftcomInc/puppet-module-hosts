@@ -110,13 +110,15 @@ class hosts (
     ensure => 'absent',
   }
 
-  host { $localhost_entry:
+  host { 'ipv4_localhost':
+    name         => $localhost_entry,
     ensure       => $localhost_ensure,
     host_aliases => $my_localhost_aliases,
     ip           => $localhost_ip,
   }
 
-  host { $localhost6_entry:
+  host { 'ipv6_localhost':
+    name         => $localhost6_entry,
     ensure       => $localhost6_ensure,
     host_aliases => $my_localhost6_aliases,
     ip           => $localhost6_ip,
